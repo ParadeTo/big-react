@@ -109,7 +109,7 @@ function updateState<State>(): [State, Disptach<State>] {
 
 	const current = currentHook as Hook;
 	let baseQueue = current.baseQueue;
-
+	debugger;
 	const pending = queue.shared.pending;
 
 	if (pending !== null) {
@@ -344,6 +344,7 @@ function updateWorkInProgressHook(): Hook {
 			);
 		}
 		currentHook = nextCurrentHook as Hook;
+		debugger;
 		const newHook: Hook = {
 			memoizedState: currentHook.memoizedState,
 			// 对于state，保存update相关数据

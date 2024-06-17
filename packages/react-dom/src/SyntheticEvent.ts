@@ -3,7 +3,8 @@ import * as Scheduler from 'scheduler';
 import {
 	SyncLane,
 	DefaultLane,
-	InputContinuousLane
+	InputContinuousLane,
+	lanesToSchedulerPriority
 } from 'react-reconciler/src/fiberLanes';
 const { unstable_runWithPriority: runWithPriority } = Scheduler;
 
@@ -160,16 +161,21 @@ export const initEvent = (container: Container, eventType: string) => {
 		dispatchEvent(container, eventType, e);
 	});
 };
-const eventTypeToEventPriority = (eventType: string) => {
+
+const getLane = (eventType: string) => {
 	switch (eventType) {
 		case 'click':
 		case 'keydown':
 		case 'keyup':
-			return SyncLane;
+			return InputContinuousLane;
 		case 'scroll':
 			return InputContinuousLane;
 		// TODO 更多事件类型
 		default:
 			return DefaultLane;
 	}
+};
+const eventTypeToEventPriority = (eventType: string) => {
+	const lane = getLane(eventType);
+	return lanesToSchedulerPriority(lane);
 };
