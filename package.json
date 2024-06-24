@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"scripts": {
 		"build:dev": "rm -rf dist && rollup --config scripts/rollup/dev.config.js",
-		"demo": "vite serve demos/v9 --config demos/vite.config.js --force",
+		"demo": "vite serve demos/v11 --config demos/vite.config.js --force",
 		"lint": "eslint --ext .ts,.jsx,.tsx --fix --quiet ./packages",
 		"test": "jest"
 	},
@@ -43,8 +43,7 @@
 		"tslib": "^2.4.0",
 		"typescript": "^4.7.3",
 		"vite": "^3.0.0",
-		"jest-react": "^0.14.0",
-		"react-test-renderer": "workspace:^18.2.0"
+		"jest-react": "^0.14.0"
 	},
 	"dependencies": {
 		"scheduler": "^0.23.0"
